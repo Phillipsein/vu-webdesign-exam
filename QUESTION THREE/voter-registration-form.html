@@ -9,38 +9,40 @@
         font-family: Arial, Helvetica, sans-serif;
         line-height: 1.5;
         margin: 0;
-        background: #f9f9f9;
+        background: #fff8cc; /* soft yellow background */
       }
       .wrap {
         max-width: 600px;
         margin: 40px auto;
-        background: #fff;
+        background: #fffde7; /* light yellow form container */
         padding: 20px;
         border-radius: 8px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        border: 2px solid #ffd700; /* NRM yellow border */
       }
       h1 {
         text-align: center;
-        color: #0ea5e9;
+        color: #000; /* black for contrast */
       }
       label {
         display: block;
         margin: 10px 0 4px;
         font-weight: bold;
+        color: #000;
       }
       input,
-      select,
-      textarea {
+      select {
         width: 100%;
         padding: 8px;
         border: 1px solid #ccc;
         border-radius: 6px;
       }
+      /* Register button */
       .btn {
         margin-top: 16px;
         display: block;
         width: 100%;
-        background: #0ea5e9;
+        background: #0ea5e9; /* blue */
         color: #fff;
         border: none;
         padding: 10px;
@@ -51,25 +53,43 @@
       .btn:hover {
         background: #045c85;
       }
+      /* NRM Site button */
+      .nrm-btn {
+        display: block;
+        margin: 20px auto 0;
+        width: 60%;
+        background: #ffd700; /* bright NRM yellow */
+        color: #000;
+        font-weight: bold;
+        border: none;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 30px;
+        cursor: pointer;
+        text-align: center;
+      }
+      .nrm-btn:hover {
+        background: #e6c200;
+      }
     </style>
   </head>
   <body>
     <div class="wrap">
       <h1>NRM Voter Registration Form</h1>
       <form action="#" method="post">
-        <!-- Mark 1: Full Name -->
+        <!-- Full Name -->
         <label for="name">Full Name</label>
         <input type="text" id="name" name="fullname" required />
 
-        <!-- Mark 2: National ID -->
+        <!-- National ID -->
         <label for="nid">National ID Number</label>
         <input type="text" id="nid" name="nid" required />
 
-        <!-- Mark 3: Date of Birth -->
+        <!-- Date of Birth -->
         <label for="dob">Date of Birth</label>
         <input type="date" id="dob" name="dob" required />
 
-        <!-- Mark 4: Gender -->
+        <!-- Gender -->
         <label for="gender">Gender</label>
         <select id="gender" name="gender" required>
           <option value="">-- Select --</option>
@@ -78,29 +98,26 @@
           <option>Other</option>
         </select>
 
-        <!-- Mark 5: District -->
+        <!-- District -->
         <label for="district">District</label>
         <input type="text" id="district" name="district" required />
 
-        <!-- Mark 6: Constituency -->
+        <!-- Constituency -->
         <label for="constituency">Constituency</label>
         <input type="text" id="constituency" name="constituency" required />
 
-        <!-- Mark 7: Polling Station -->
-        <label for="station">Polling Station</label>
-        <input type="text" id="station" name="station" required />
-
-        <!-- Mark 8: Phone Number -->
+        <!-- Phone Number -->
         <label for="phone">Phone Number</label>
         <input type="tel" id="phone" name="phone" required />
 
-        <!-- Mark 9: Email -->
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" />
-
-        <!-- Mark 10: Submit -->
+        <!-- Submit Button -->
         <button type="submit" class="btn">Register</button>
       </form>
+
+      <!-- NRM SITE Button -->
+      <a href="https://www.nrm.ug/" target="_blank">
+        <button class="nrm-btn" type="button">NRM SITE</button>
+      </a>
     </div>
   </body>
 </html>
