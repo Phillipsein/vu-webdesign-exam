@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NRM Voter Registration</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.5;
+        margin: 0;
+        background: #f9f9f9;
+      }
+      .wrap {
+        max-width: 600px;
+        margin: 40px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+        color: #0ea5e9;
+      }
+      label {
+        display: block;
+        margin: 10px 0 4px;
+        font-weight: bold;
+      }
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+      }
+      .btn {
+        margin-top: 16px;
+        display: block;
+        width: 100%;
+        background: #0ea5e9;
+        color: #fff;
+        border: none;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background: #045c85;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>NRM Voter Registration Form</h1>
+      <form action="#" method="post">
+        <!-- Mark 1: Full Name -->
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="fullname" required />
+
+        <!-- Mark 2: National ID -->
+        <label for="nid">National ID Number</label>
+        <input type="text" id="nid" name="nid" required />
+
+        <!-- Mark 3: Date of Birth -->
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" name="dob" required />
+
+        <!-- Mark 4: Gender -->
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender" required>
+          <option value="">-- Select --</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+
+        <!-- Mark 5: District -->
+        <label for="district">District</label>
+        <input type="text" id="district" name="district" required />
+
+        <!-- Mark 6: Constituency -->
+        <label for="constituency">Constituency</label>
+        <input type="text" id="constituency" name="constituency" required />
+
+        <!-- Mark 7: Polling Station -->
+        <label for="station">Polling Station</label>
+        <input type="text" id="station" name="station" required />
+
+        <!-- Mark 8: Phone Number -->
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required />
+
+        <!-- Mark 9: Email -->
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" />
+
+        <!-- Mark 10: Submit -->
+        <button type="submit" class="btn">Register</button>
+      </form>
+    </div>
+  </body>
+</html>
