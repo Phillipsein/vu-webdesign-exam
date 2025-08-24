@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nyanja Restaurant — Menus</title>
+    <style>
+      :root {
+        --ink: #232323;
+        --muted: #5a5a5a;
+        --card: #ffffff;
+        --bg: #f6f7fb;
+        --line: #e4e7ef;
+        --accent: #0a7;
+        --veg: #2b8a3e;
+        --gf: #7c4dff;
+      }
+
+      html,
+      body {
+        margin: 0;
+        font-family: system-ui, Arial, sans-serif;
+        color: var(--ink);
+        background: var(--bg);
+      }
+
+      /* Header */
+      header {
+        padding: 28px 18px;
+        background: linear-gradient(120deg, #fefefe, #eef6ff);
+        text-align: center; /* center header text */
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 1.8rem;
+      }
+
+      header p {
+        margin: 0.25rem 0 0;
+        color: var(--muted);
+      }
+
+      /* Navigation */
+      nav {
+        background: #fff;
+        border-block: 1px solid var(--line);
+        position: sticky; /* keeps nav visible when scrolling */
+        top: 0;
+        z-index: 1000;
+      }
+
+      nav ul {
+        display: flex;
+        justify-content: center; /* center nav items */
+        gap: 18px;
+        list-style: none;
+        margin: 0;
+        padding: 10px 16px;
+      }
+
+      nav a {
+        color: var(--ink);
+        text-decoration: none;
+        padding: 0.35rem 0.6rem;
+        border-radius: 999px;
+      }
+
+      nav a:hover {
+        background: #f1f5ff;
+      }
+
+      /* Main content */
+      main {
+        max-width: 1000px;
+        margin: 20px auto;
+        padding: 0 16px;
+        display: grid;
+        gap: 22px;
+      }
+
+      /* Section Cards */
+      section {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 16px;
+      }
+
+      section > h2 {
+        margin: 0 0 0.25rem;
+        font-size: 1.3rem;
+      }
+
+      section > p {
+        margin: 0.25rem 0 1rem;
+        color: var(--muted);
+      }
+
+      /* Category Lists */
+      .category-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 14px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .category-list > li {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 12px;
+        background: #fff;
+      }
+
+      .category-list h3 {
+        margin: 0.25rem 0 0.5rem;
+        font-size: 1.05rem;
+      }
+
+      .items {
+        margin: 0;
+        padding-left: 1.1rem;
+      }
+
+      .items > li {
+        margin: 0.25rem 0 0.4rem;
+      }
+
+      .variants {
+        margin: 0.25rem 0 0.4rem;
+        padding-left: 1.1rem;
+        list-style: "➤  ";
+      }
+
+      /* Badges */
+      .badge {
+        display: inline-block;
+        font-size: 0.72rem;
+        line-height: 1;
+        padding: 0.25rem 0.45rem;
+        border-radius: 6px;
+        border: 1px solid var(--line);
+        background: #fafafa;
+        color: var(--muted);
+        margin-left: 0.35rem;
+      }
+
+      .veg {
+        color: #fff;
+        background: var(--veg);
+        border-color: transparent;
+      }
+
+      .gf {
+        color: #fff;
+        background: var(--gf);
+        border-color: transparent;
+      }
+
+      /* Legend */
+      .legend {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+        color: var(--muted);
+        font-size: 0.9rem;
+        margin-top: 8px;
+      }
+
+      .legend .badge {
+        margin: 0;
+      }
+
+      /* Footer */
+      footer {
+        max-width: 1000px;
+        margin: 10px auto 40px;
+        padding: 0 16px;
+        color: var(--muted);
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Nyanja Restaurant</h1>
+      <p>Breakfast • Lunch • Dinner</p>
+    </header>
+
+    <nav aria-label="Menu navigation">
+      <ul>
+        <li><a href="#breakfast">Breakfast</a></li>
+        <li><a href="#lunch">Lunch</a></li>
+        <li><a href="#dinner">Dinner</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <!-- Breakfast -->
+      <section id="breakfast" aria-labelledby="breakfast-heading">
+        <h2 id="breakfast-heading">Breakfast</h2>
+        <p>Start your day with hearty classics and fresh coffee.</p>
+
+        <ul class="category-list">
+          <li>
+            <h3>Hot Buffet</h3>
+            <ul class="items">
+              <li>Scrambled Eggs <span class="badge veg">Vegetarian</span></li>
+              <li>
+                Grilled Tomatoes <span class="badge veg">Vegetarian</span>
+                <span class="badge gf">Gluten-Free</span>
+              </li>
+              <li>
+                Sautéed Mushrooms <span class="badge veg">Vegetarian</span>
+              </li>
+              <li>Breakfast Sausages</li>
+            </ul>
+          </li>
+          <li>
+            <h3>Omelets</h3>
+            <ul class="items">
+              <li>
+                Cheddar &amp; Herbs <span class="badge veg">Vegetarian</span>
+              </li>
+              <li>
+                Spinach &amp; Feta <span class="badge veg">Vegetarian</span>
+                <ul class="variants">
+                  <li>Egg-white option</li>
+                  <li>
+                    No-cheese option <span class="badge gf">Gluten-Free</span>
+                  </li>
+                </ul>
+              </li>
+              <li>Western (ham, peppers, onions)</li>
+            </ul>
+          </li>
+          <li>
+            <h3>Coffee &amp; Bread Counter</h3>
+            <ul class="items">
+              <li>Fresh Brewed Coffee</li>
+              <li>Assorted Teas</li>
+              <li>
+                Banana Bread
+                <ul class="variants">
+                  <li>Gluten-Free slice <span class="badge gf">GF</span></li>
+                  <li>Vegan slice <span class="badge veg">Vegan</span></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="legend" aria-label="Dietary legend">
+          <span class="badge veg">Vegetarian</span>
+          <span class="badge gf">Gluten-Free</span>
+        </div>
+      </section>
+
+      <!-- Lunch -->
+      <section id="lunch" aria-labelledby="lunch-heading">
+        <h2 id="lunch-heading">Lunch</h2>
+        <p>Light and fresh mid-day picks.</p>
+
+        <ul class="category-list">
+          <li>
+            <h3>Sandwiches</h3>
+            <ul class="items">
+              <li>Grilled Chicken &amp; Avocado</li>
+              <li>
+                Roasted Veggie Panini <span class="badge veg">Vegetarian</span>
+              </li>
+              <li>Tuna Melt</li>
+              <li>GF Turkey Club <span class="badge gf">Gluten-Free</span></li>
+            </ul>
+          </li>
+          <li>
+            <h3>Salads</h3>
+            <ul class="items">
+              <li>Greek Salad <span class="badge veg">Vegetarian</span></li>
+              <li>
+                Quinoa Power Bowl <span class="badge veg">Vegetarian</span>
+                <span class="badge gf">Gluten-Free</span>
+              </li>
+              <li>Caesar (with/without chicken)</li>
+            </ul>
+          </li>
+          <li>
+            <h3>Soups</h3>
+            <ul class="items">
+              <li>Tomato Basil <span class="badge veg">Vegetarian</span></li>
+              <li>
+                Butternut Squash <span class="badge veg">Vegetarian</span>
+                <span class="badge gf">Gluten-Free</span>
+              </li>
+              <li>Chicken Noodle</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Dinner -->
+      <section id="dinner" aria-labelledby="dinner-heading">
+        <h2 id="dinner-heading">Dinner</h2>
+        <p>Comforting favorites and seasonal plates.</p>
+
+        <ul class="category-list">
+          <li>
+            <h3>Appetizers</h3>
+            <ul class="items">
+              <li>Bruschetta Trio <span class="badge veg">Vegetarian</span></li>
+              <li>
+                Grilled Halloumi <span class="badge veg">Vegetarian</span>
+                <span class="badge gf">Gluten-Free</span>
+              </li>
+              <li>Calamari</li>
+            </ul>
+          </li>
+          <li>
+            <h3>Main Courses</h3>
+            <ul class="items">
+              <li>
+                Herb-Roasted Chicken (GF available)
+                <span class="badge gf">Gluten-Free</span>
+              </li>
+              <li>
+                Vegetable Lasagna <span class="badge veg">Vegetarian</span>
+              </li>
+              <li>Pan-Seared Tilapia</li>
+            </ul>
+          </li>
+          <li>
+            <h3>Desserts</h3>
+            <ul class="items">
+              <li>Chocolate Lava Cake</li>
+              <li>Fruit Parfait <span class="badge gf">Gluten-Free</span></li>
+              <li>
+                Cheesecake (berry compote)
+                <ul class="variants">
+                  <li>GF crust option <span class="badge gf">GF</span></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <small
+        >&copy; 2025 Nyanja Restaurant · Menu items and availability may change
+        seasonally.</small
+      >
+    </footer>
+  </body>
+</html>
