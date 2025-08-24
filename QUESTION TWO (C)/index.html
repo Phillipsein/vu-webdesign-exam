@@ -1,0 +1,651 @@
+<!-- Jireh Financial Solutions Website Prototype -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Mark 12: SEO & accessibility basics -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Jireh Financial Solutions — trusted financial advisory in Kampala. Learn, compare services, and book a consultation."
+    />
+    <title>Jireh Financial Solutions</title>
+    <style>
+      /* Base + tokens */
+      :root {
+        --bg: #ffffff;
+        --ink: #0f172a; /* slate-900 */
+        --muted: #475569; /* slate-600 */
+        --primary: #0c4a6e; /* cyan-900 */
+        --primary-ink: #ffffff;
+        --accent: #0ea5e9; /* sky-500 */
+        --card: #f8fafc; /* slate-50 */
+        --border: #e2e8f0; /* slate-200 */
+        --success: #16a34a;
+        --danger: #dc2626;
+        --radius: 14px;
+        --space: clamp(16px, 2vw, 22px);
+        --max: 1100px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+          "Helvetica Neue", Arial;
+      }
+      a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      .container {
+        max-width: var(--max);
+        margin: auto;
+        padding: 0 var(--space);
+      }
+      .btn {
+        display: inline-block;
+        background: var(--accent);
+        color: #fff;
+        padding: 0.7rem 1rem;
+        border-radius: 999px;
+        font-weight: 600;
+        border: 0;
+      }
+      .btn--ghost {
+        background: transparent;
+        color: var(--primary);
+        border: 2px solid var(--primary);
+      }
+      .grid {
+        display: grid;
+        gap: var(--space);
+      }
+      .grid--3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .grid--2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media (max-width: 900px) {
+        .grid--3 {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 640px) {
+        .grid--3,
+        .grid--2 {
+          grid-template-columns: 1fr;
+        }
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1rem;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      .section {
+        padding: clamp(32px, 6vw, 72px) 0;
+      }
+      h1,
+      h2,
+      h3 {
+        line-height: 1.2;
+        margin: 0 0 0.6rem;
+      }
+      h1 {
+        font-size: clamp(28px, 4vw, 44px);
+      }
+      h2 {
+        font-size: clamp(22px, 3vw, 28px);
+      }
+      h3 {
+        font-size: clamp(18px, 2.5vw, 22px);
+      }
+      /* Header / nav */
+      header {
+        position: sticky;
+        top: 0;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: saturate(160%) blur(6px);
+        border-bottom: 1px solid var(--border);
+        z-index: 10;
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.8rem 0;
+      }
+      .brand {
+        font-weight: 800;
+        color: var(--primary);
+      }
+      .nav a {
+        font-weight: 600;
+        padding: 0.3rem 0.5rem;
+        border-radius: 8px;
+      }
+      .nav a:focus-visible,
+      .btn:focus-visible {
+        outline: 3px solid #94a3b8;
+        outline-offset: 2px;
+      }
+      /* Hero */
+      .hero {
+        display: grid;
+        gap: var(--space);
+        grid-template-columns: 2fr 1fr;
+        align-items: center;
+      }
+      @media (max-width: 900px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+      }
+      .hero-badges {
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+      }
+      .badge {
+        background: #e0f2fe;
+        color: #075985;
+        font-weight: 700;
+        padding: 0.25rem 0.55rem;
+        border-radius: 999px;
+        font-size: 0.8rem;
+      }
+      .img-ph {
+        height: 180px;
+        background: linear-gradient(135deg, #e2e8f0, #f8fafc);
+        border: 1px dashed var(--border);
+        border-radius: var(--radius);
+      }
+      /* Lists */
+      .list {
+        margin: 0;
+        padding-left: 1.1rem;
+      }
+      .list li {
+        margin: 0.25rem 0;
+      }
+      /* Forms */
+      form {
+        display: grid;
+        gap: 0.8rem;
+      }
+      label {
+        font-weight: 600;
+      }
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 0.7rem;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+      }
+      input:invalid,
+      textarea:invalid {
+        border-color: #f59e0b;
+      }
+      .hint {
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+      .notice {
+        background: #ecfeff;
+        border: 1px solid #cffafe;
+        border-radius: 12px;
+        padding: 0.8rem;
+      }
+      /* Footer */
+      footer {
+        border-top: 1px solid var(--border);
+        background: #fafafa;
+      }
+      .footer-grid {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+      }
+      @media (max-width: 900px) {
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 640px) {
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .kicker {
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        font-weight: 700;
+        font-size: 0.8rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mark 1: Clear IA with accessible, sticky navigation -->
+    <header>
+      <nav class="container nav" aria-label="Primary">
+        <div class="brand">Jireh Financial Solutions</div>
+        <div role="navigation">
+          <a href="#home">Home</a>
+          <a href="#services">Services</a>
+          <a href="#learning">Learning Hub</a>
+          <a href="#book">Book</a>
+          <a href="#about">About</a>
+          <a href="#team">Team</a>
+          <a href="#faqs">FAQs</a>
+          <a href="#contact">Contact</a>
+          <a href="#privacy">Privacy</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="home" class="container section">
+      <!-- Mark 2: Hero with value proposition + trust cues -->
+      <section class="hero" aria-labelledby="hero-heading">
+        <div>
+          <h1 id="hero-heading">
+            Trusted financial advice for individuals and SMEs in Kampala
+          </h1>
+          <p class="muted">
+            Plan, invest, and grow with clear guidance. Explore our learning hub
+            then book a free consultation.
+          </p>
+          <div style="display: flex; gap: 0.6rem; margin: 0.8rem 0 1.2rem">
+            <a class="btn" href="#book">Book consultation</a>
+            <a class="btn btn--ghost" href="#learning">Browse resources</a>
+          </div>
+          <div class="hero-badges" aria-label="Trust indicators">
+            <span class="badge">Licensed advisors</span>
+            <span class="badge">Transparent fees</span>
+            <span class="badge">Data protected</span>
+          </div>
+        </div>
+        <div class="img-ph" aria-hidden="true"></div>
+      </section>
+    </main>
+
+    <!-- Mark 3: Services overview (cards) -->
+    <section id="services" class="section" aria-labelledby="services-h">
+      <div class="container">
+        <h2 id="services-h">Services</h2>
+        <div class="grid grid--3" role="list">
+          <article class="card" role="listitem">
+            <h3><a href="#service-detail">Retirement Planning</a></h3>
+            <p class="muted">
+              Set targets, choose vehicles, and stay on track.
+            </p>
+            <a class="btn" href="#book">Book</a>
+          </article>
+          <article class="card" role="listitem">
+            <h3><a href="#service-detail">SME Advisory</a></h3>
+            <p class="muted">Cash flow, tax readiness, and growth planning.</p>
+            <a class="btn" href="#book">Book</a>
+          </article>
+          <article class="card" role="listitem">
+            <h3><a href="#service-detail">Investment Planning</a></h3>
+            <p class="muted">Risk-based portfolios with clear disclosures.</p>
+            <a class="btn" href="#book">Book</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mark 4: Service detail template -->
+    <section id="service-detail" class="section" aria-labelledby="svc-h">
+      <div class="container grid grid--2">
+        <div>
+          <h2 id="svc-h">Service detail — example template</h2>
+          <div class="card">
+            <h3>Problem we solve</h3>
+            <p class="muted">
+              Unclear retirement target, product overload, no review rhythm.
+            </p>
+            <h3>Our approach</h3>
+            <ul class="list">
+              <li>Define goal and timeline</li>
+              <li>Assess risk and current savings</li>
+              <li>Select instruments and contribution plan</li>
+              <li>Quarterly review and rebalance</li>
+            </ul>
+            <h3>Who it suits</h3>
+            <p class="muted">
+              Salaried professionals and SME owners planning 10+ years out.
+            </p>
+            <div class="notice">
+              <strong>Disclosure:</strong> Investments can lose value. Past
+              performance is not a guarantee.
+            </div>
+            <p><a class="btn" href="#book">Book consultation</a></p>
+          </div>
+        </div>
+        <aside class="card">
+          <h3>FAQs (sample)</h3>
+          <p>
+            <strong>How are fees set?</strong><br /><span class="muted"
+              >Flat planning fee plus optional AUM. Fully disclosed before
+              onboarding.</span
+            >
+          </p>
+          <p>
+            <strong>What documents are needed?</strong><br /><span class="muted"
+              >ID, income proof, current statements.</span
+            >
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Mark 5: Learning Hub list/cards -->
+    <section id="learning" class="section" aria-labelledby="learn-h">
+      <div class="container">
+        <h2 id="learn-h">Learning Hub</h2>
+        <p class="muted">
+          Browse beginner-friendly guides. Categories: Budgeting, Investing,
+          Taxes, Retirement.
+        </p>
+        <div class="grid grid--3" role="list">
+          <article class="card" role="listitem">
+            <h3><a href="#article">Budgeting for SMEs</a></h3>
+            <p class="muted">
+              How to set a 3-month runway and pay yourself first.
+            </p>
+            <small class="muted">Beginner • 5 min</small>
+          </article>
+          <article class="card" role="listitem">
+            <h3><a href="#article">Intro to Risk</a></h3>
+            <p class="muted">
+              Volatility, drawdowns, and why time matters more than timing.
+            </p>
+            <small class="muted">Beginner • 6 min</small>
+          </article>
+          <article class="card" role="listitem">
+            <h3><a href="#article">Tax Basics in Uganda</a></h3>
+            <p class="muted">Filing tips and common SME deductions.</p>
+            <small class="muted">SME • 7 min</small>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mark 6: Article template -->
+    <section id="article" class="section" aria-labelledby="article-h">
+      <div class="container grid grid--2">
+        <article>
+          <h2 id="article-h">Article title — example template</h2>
+          <p class="muted">
+            By <strong>Adisa N.</strong> • 8 min read • Updated Aug 2025
+          </p>
+          <div class="img-ph" aria-hidden="true"></div>
+          <p>
+            Intro paragraph gives a quick takeaway and links to related
+            services.
+          </p>
+          <h3>Key idea</h3>
+          <p>Short, plain-language explanation with one practical example.</p>
+          <h3>Next steps</h3>
+          <p>Checklist to act on today and a reminder to review quarterly.</p>
+          <p><a class="btn" href="#book">Book consultation</a></p>
+        </article>
+        <aside class="card">
+          <h3>Related</h3>
+          <ul class="list">
+            <li><a href="#service-detail">Retirement Planning</a></li>
+            <li><a href="#learning">All investing guides</a></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Mark 7: Booking form with HTML validation + consent -->
+    <section id="book" class="section" aria-labelledby="book-h">
+      <div class="container grid grid--2">
+        <div>
+          <h2 id="book-h">Book a consultation</h2>
+          <form action="#" method="post" novalidate>
+            <div>
+              <label for="name">Full name</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                placeholder="e.g., Jane Akena"
+              />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                placeholder="you@example.com"
+              />
+            </div>
+            <div>
+              <label for="service">Service of interest</label>
+              <select id="service" name="service" required>
+                <option value="">Select…</option>
+                <option>Retirement Planning</option>
+                <option>SME Advisory</option>
+                <option>Investment Planning</option>
+                <option>Tax Planning</option>
+              </select>
+            </div>
+            <div>
+              <label for="notes">Notes (optional)</label>
+              <textarea
+                id="notes"
+                name="notes"
+                rows="4"
+                placeholder="Tell us a bit about your goals"
+              ></textarea>
+            </div>
+            <div>
+              <input id="consent" name="consent" type="checkbox" required />
+              <label for="consent"
+                >I agree to the Privacy Policy and allow Jireh to contact
+                me.</label
+              >
+            </div>
+            <button class="btn" type="submit">Submit request</button>
+            <p class="hint">We respond within one business day.</p>
+          </form>
+        </div>
+        <aside class="card">
+          <h3>What happens next</h3>
+          <ol class="list">
+            <li>We confirm time by email or phone.</li>
+            <li>Short call to understand your needs.</li>
+            <li>Clear next steps and fee outline.</li>
+          </ol>
+          <div class="notice">
+            <strong>Data protection:</strong> We use your info only to handle
+            your request.
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Mark 8: About with Organization microdata (HTML-only) -->
+    <section
+      id="about"
+      class="section"
+      aria-labelledby="about-h"
+      itemscope
+      itemtype="https://schema.org/Organization"
+    >
+      <div class="container grid grid--2">
+        <div>
+          <h2 id="about-h" itemprop="name">About Jireh Financial Solutions</h2>
+          <p class="muted" itemprop="description">
+            We provide practical, transparent financial advice for individuals
+            and SMEs in Kampala.
+          </p>
+          <ul class="list">
+            <li>Mission: simple, ethical guidance</li>
+            <li>Approach: plan → act → review</li>
+            <li>Offices: Kampala</li>
+          </ul>
+        </div>
+        <aside class="card">
+          <div class="kicker">Contact</div>
+          <p itemprop="address">Plot 123, Kampala, Uganda</p>
+          <p>
+            Phone: <span itemprop="telephone">+256 700 000000</span><br />Email:
+            <a itemprop="email" href="mailto:hello@jirehfinance.ug"
+              >hello@jirehfinance.ug</a
+            >
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Mark 9: Team section (trust) -->
+    <section id="team" class="section" aria-labelledby="team-h">
+      <div class="container">
+        <h2 id="team-h">Our Team</h2>
+        <div class="grid grid--3">
+          <article class="card">
+            <h3>Adisa Nakato, CFP</h3>
+            <p class="muted">Retirement & investments • 10+ yrs</p>
+          </article>
+          <article class="card">
+            <h3>Samuel K., CPA</h3>
+            <p class="muted">SME advisory & tax</p>
+          </article>
+          <article class="card">
+            <h3>Ruth A., CFA</h3>
+            <p class="muted">Portfolio strategy</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mark 10: FAQs (friction reduction) -->
+    <section id="faqs" class="section" aria-labelledby="faq-h">
+      <div class="container">
+        <h2 id="faq-h">FAQs</h2>
+        <div class="grid grid--2">
+          <div class="card">
+            <h3>Do you offer free first meetings?</h3>
+            <p class="muted">
+              Yes. We use the first call to understand your needs and outline
+              fit.
+            </p>
+          </div>
+          <div class="card">
+            <h3>How do you charge?</h3>
+            <p class="muted">
+              Simple planning fee, and where applicable, clearly disclosed
+              ongoing fees.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mark 11: Contact page with form -->
+    <section id="contact" class="section" aria-labelledby="contact-h">
+      <div class="container grid grid--2">
+        <div>
+          <h2 id="contact-h">Contact us</h2>
+          <form action="#" method="post" novalidate>
+            <div>
+              <label for="c-name">Full name</label>
+              <input id="c-name" name="name" type="text" required />
+            </div>
+            <div>
+              <label for="c-email">Email</label>
+              <input id="c-email" name="email" type="email" required />
+            </div>
+            <div>
+              <label for="c-msg">Message</label>
+              <textarea id="c-msg" name="message" rows="5" required></textarea>
+            </div>
+            <button class="btn" type="submit">Send message</button>
+          </form>
+        </div>
+        <aside class="card">
+          <h3>Office</h3>
+          <p class="muted">Plot 123, Kampala, Uganda</p>
+          <h3>Hours</h3>
+          <p class="muted">Mon–Fri, 9:00–17:00 EAT</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Privacy (simple legal) -->
+    <section id="privacy" class="section" aria-labelledby="privacy-h">
+      <div class="container">
+        <h2 id="privacy-h">Privacy Policy</h2>
+        <p class="muted">
+          We collect only the details you provide to serve your request. You can
+          ask us to delete your data at any time.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container section footer-grid" aria-labelledby="footer-h">
+        <div>
+          <div class="kicker" id="footer-h">Jireh Financial Solutions</div>
+          <p class="muted">
+            Practical, transparent financial advice in Kampala.
+          </p>
+          <p class="muted">
+            © <span id="year">2025</span> Jireh Financial Solutions
+          </p>
+        </div>
+        <div>
+          <div class="kicker">Company</div>
+          <p>
+            <a href="#about">About</a><br /><a href="#team">Team</a><br /><a
+              href="#news"
+              >News</a
+            >
+          </p>
+        </div>
+        <div>
+          <div class="kicker">Resources</div>
+          <p>
+            <a href="#learning">Learning Hub</a><br /><a href="#faqs">FAQs</a>
+          </p>
+        </div>
+        <div>
+          <div class="kicker">Legal</div>
+          <p>
+            <a href="#privacy">Privacy</a><br /><a href="#service-detail"
+              >Disclosures</a
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
